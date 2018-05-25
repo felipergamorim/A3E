@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Nome do Aplicativo (A3E)
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="filterEscolas($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let escola of escolas">
+
+      <button ion-item (click)="editEscola(escola.escola_id)">
+        <h1>{{ escola.nome }}</h1>
+      </button>
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removeEscola(escola)">
+          <ion-icon name="trash"></ion-icon>
+          Excluir
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="addEscola()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-list>
+      <ion-item no-lines>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-footer>
