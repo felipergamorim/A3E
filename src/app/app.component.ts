@@ -2,14 +2,16 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { EscolaPage } from '../pages/escola/escola';
+
+import { TabsPage } from '../pages/tabs/tabs';
+
 import { DatabaseProvider } from '../providers/database/database'
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = null;
+  rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, dbProvider: DatabaseProvider) {
     platform.ready().then(() => {
@@ -21,17 +23,13 @@ export class MyApp {
       dbProvider.createDatabase()
         .then(() => {
           // fechando a SplashScreen somente quando o banco for criado
-          this.openHomePage(splashScreen);
+          splashScreen.hide();;
         })
         .catch(() => {
           // ou se houver erro na criação do banco
-          this.openHomePage(splashScreen);
+          splashScreen.hide();
         });
     });
   }
 
-  private openHomePage(splashScreen: SplashScreen) {
-    splashScreen.hide();
-    this.rootPage = EscolaPage;
-  }
 }

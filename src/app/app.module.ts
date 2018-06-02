@@ -1,20 +1,28 @@
+import { NgModule, ErrorHandler,  LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
 import { EscolaPage } from '../pages/escola/escola';
+import { ClassePage } from '../pages/classe/classe';
+import { AboutPage } from '../pages/about/about';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { SQLite } from '@ionic-native/sqlite'
 import { DatabaseProvider } from '../providers/database/database';
 import { EscolaProvider } from '../providers/escola/escola';
+import { ClasseProvider } from '../providers/classe/classe';
 
 @NgModule({
   declarations: [
     MyApp,
-    EscolaPage
+    EscolaPage,
+    ClassePage,
+    AboutPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,10 @@ import { EscolaProvider } from '../providers/escola/escola';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    EscolaPage
+    EscolaPage,
+    ClassePage,
+    AboutPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
@@ -33,7 +44,8 @@ import { EscolaProvider } from '../providers/escola/escola';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
     DatabaseProvider,
-    EscolaProvider
+    EscolaProvider,
+    ClasseProvider
   ]
 })
 export class AppModule {}

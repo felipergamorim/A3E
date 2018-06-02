@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      A3E Aplicativo
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="filterClasses($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let classe of classes">
+
+      <button ion-item (click)="editClasse(classe.classe_id)">
+        <h1>{{ classe.nome }}</h1>
+      </button>
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removeClasse(classe)">
+          <ion-icon name="trash"></ion-icon>
+          Excluir
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="addClasse()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+

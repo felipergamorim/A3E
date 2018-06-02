@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { EscolaProvider, Escola } from '../../providers/escola/escola'
+import { EscolaProvider, Escola } from '../../../providers/escola/escola'
 
 @IonicPage()
 @Component({
