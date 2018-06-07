@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      A3E Aplicativo
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="filterAvaliavels($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let avaliavel of avaliavels">
+
+      <button ion-item (click)="editAvaliavel(avaliavel.avaliavel_id)">
+        <h1>{{ avaliavel.nome }}</h1>
+      </button>
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removeAvaliavel(avaliavel)">
+          <ion-icon name="trash"></ion-icon>
+          Excluir
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)="addAvaliavel()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
+

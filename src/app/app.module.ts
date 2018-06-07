@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 
 import { EscolaPage } from '../pages/escola/escola';
 import { ClassePage } from '../pages/classe/classe';
+import { AvaliavelPage } from '../pages/avaliavel/avaliavel';
 import { AboutPage } from '../pages/about/about';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -15,12 +16,14 @@ import { SQLite } from '@ionic-native/sqlite'
 import { DatabaseProvider } from '../providers/database/database';
 import { EscolaProvider } from '../providers/escola/escola';
 import { ClasseProvider } from '../providers/classe/classe';
+import { AvaliavelProvider } from '../providers/avaliavel/avaliavel';
 
 @NgModule({
   declarations: [
     MyApp,
     EscolaPage,
     ClassePage,
+    AvaliavelPage,
     AboutPage,
     TabsPage
   ],
@@ -33,6 +36,7 @@ import { ClasseProvider } from '../providers/classe/classe';
     MyApp,
     EscolaPage,
     ClassePage,
+    AvaliavelPage,
     AboutPage,
     TabsPage
   ],
@@ -45,7 +49,8 @@ import { ClasseProvider } from '../providers/classe/classe';
     SQLite,
     DatabaseProvider,
     EscolaProvider,
-    ClasseProvider
+    ClasseProvider,
+    AvaliavelProvider
   ]
 })
 export class AppModule {}

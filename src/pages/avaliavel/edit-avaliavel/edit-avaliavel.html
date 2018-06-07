@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic SQLite Example
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" name="nome" [(ngModel)]="model.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Escola</ion-label>
+      <ion-select name="escola_id" [(ngModel)]="model.escola_id">
+        <ion-option *ngFor="let escola of escolas" value="{{ escola.escola_id }}">{{ escola.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Classe</ion-label>
+      <ion-select name="classe_id" [(ngModel)]="model.classe_id">
+        <ion-option *ngFor="let classe of classes" value="{{ classe.classe_id }}">{{ classe.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Tipo</ion-label>
+      <ion-select name="tipo_id" [(ngModel)]="model.tipo_id">
+        <ion-option *ngFor="let tipo of tipos" value="{{ tipo.tipo_id }}">{{ tipo.nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="save()">Salvar</button>
+
+</ion-content>
