@@ -16,11 +16,8 @@ import { SQLite } from '@ionic-native/sqlite'
 import { DatabaseProvider } from '../providers/database/database';
 import { EscolaProvider } from '../providers/escola/escola';
 import { ClasseProvider } from '../providers/classe/classe';
-<<<<<<< HEAD
 import { TipoProvider } from '../providers/tipo/tipo';
-=======
 import { AvaliavelProvider } from '../providers/avaliavel/avaliavel';
->>>>>>> 0e2e2d182d01c42f0ba159a83b675aca6cf266cc
 
 @NgModule({
   declarations: [
@@ -54,11 +51,8 @@ import { AvaliavelProvider } from '../providers/avaliavel/avaliavel';
     DatabaseProvider,
     EscolaProvider,
     ClasseProvider,
-<<<<<<< HEAD
+    AvaliavelProvider,
     TipoProvider
-=======
-    AvaliavelProvider
->>>>>>> 0e2e2d182d01c42f0ba159a83b675aca6cf266cc
   ]
 })
 export class AppModule {}
