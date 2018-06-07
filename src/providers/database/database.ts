@@ -52,12 +52,12 @@ export class DatabaseProvider {
 
     // Criando as chaves estrangeiras
     db.sqlBatch([
-      ['ALTER TABLE tipos ADD FOREIGN KEY(classe_id) REFERENCES classes(classe_id)'],
-      ,['ALTER TABLE avaliaveis ADD FOREIGN KEY(escola_id) REFERENCES escolas(escola_id)'],
-      ,['ALTER TABLE avaliaveis ADD FOREIGN KEY(classe_id) REFERENCES classes(classe_id)'],
-      ,['ALTER TABLE avaliaveis ADD FOREIGN KEY(tipo_id) REFERENCES tipos(tipo_id)'],
-      ,['ALTER TABLE perguntas ADD FOREIGN KEY(tipo_id) REFERENCES tipos(tipo_id)'],
-      ,['ALTER TABLE respostas ADD FOREIGN KEY(pergunta_id) REFERENCES perguntas(pergunta_id)'],
+      ['ALTER TABLE tipos ADD FOREIGN KEY(classe_id) REFERENCES classes(classe_id)']
+      ,['ALTER TABLE avaliaveis ADD FOREIGN KEY(escola_id) REFERENCES escolas(escola_id)']
+      ,['ALTER TABLE avaliaveis ADD FOREIGN KEY(classe_id) REFERENCES classes(classe_id)']
+      ,['ALTER TABLE avaliaveis ADD FOREIGN KEY(tipo_id) REFERENCES tipos(tipo_id)']
+      ,['ALTER TABLE perguntas ADD FOREIGN KEY(tipo_id) REFERENCES tipos(tipo_id)']
+      ,['ALTER TABLE respostas ADD FOREIGN KEY(pergunta_id) REFERENCES perguntas(pergunta_id)']
       ,['ALTER TABLE respostas ADD FOREIGN KEY(avaliavel_id) REFERENCES avaliaveis(avaliavel_id)']
     ])
       .then(() => console.log('Chaves Estrangeiras criadas'))
