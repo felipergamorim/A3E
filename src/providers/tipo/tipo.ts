@@ -101,4 +101,5 @@ export class TipoProvider {
 export class Tipo {
   tipo_id: number;
   nome: string;
+  classe_id: number;
 }

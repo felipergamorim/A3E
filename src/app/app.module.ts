@@ -11,6 +11,7 @@ import { ClassePage } from '../pages/classe/classe';
 import { AvaliavelPage } from '../pages/avaliavel/avaliavel';
 import { AboutPage } from '../pages/about/about';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TipoPage } from '../pages/tipo/tipo';
 
 import { SQLite } from '@ionic-native/sqlite'
 import { DatabaseProvider } from '../providers/database/database';
@@ -24,6 +25,7 @@ import { AvaliavelProvider } from '../providers/avaliavel/avaliavel';
     MyApp,
     EscolaPage,
     ClassePage,
+    TipoPage,
     AvaliavelPage,
     AboutPage,
     TabsPage
@@ -37,6 +39,7 @@ import { AvaliavelProvider } from '../providers/avaliavel/avaliavel';
     MyApp,
     EscolaPage,
     ClassePage,
+    TipoPage,
     AvaliavelPage,
     AboutPage,
     TabsPage
