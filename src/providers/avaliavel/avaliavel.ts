@@ -10,8 +10,8 @@ export class AvaliavelProvider {
   public insert(avaliavel: Avaliavel) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into avaliaveis (nome) values (?)';
-        let data = [avaliavel.nome];
+        let sql = 'insert into avaliaveis (nome, escola_id, classe_id, tipo_id) values (?,?,?,?)';
+        let data = [avaliavel.nome, avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -22,8 +22,8 @@ export class AvaliavelProvider {
   public update(avaliavel: Avaliavel) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update avaliaveis set nome = ? where avaliavel_id = ?';
-        let data = [avaliavel.nome, avaliavel.avaliavel_id];
+        let sql = 'update avaliaveis set nome = ?, escola_id = ?, classe_id = ?, tipo_id = ? where avaliavel_id = ?';
+        let data = [avaliavel.nome, avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id, avaliavel.avaliavel_id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -70,12 +70,12 @@ export class AvaliavelProvider {
   public getAll(nome: string = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'SELECT e.* FROM avaliaveis e where 1=1' ;
+        let sql = 'SELECT * FROM avaliaveis where 1=1' ;
         var data: any[];
 
         // filtrando pelo nome
         if (nome) {
-          sql += ' and e.nome like ?'
+          sql += ' and nome like ?'
           data.push('%' + nome + '%');
         }
 
@@ -100,5 +100,8 @@ export class AvaliavelProvider {
 
 export class Avaliavel {
   avaliavel_id: number;
+  escola_id: number;
+  classe_id: number;
+  tipo_id: number;
   nome: string;
 }
