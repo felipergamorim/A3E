@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { AvaliavelProvider, Avaliavel } from '../../../providers/avaliavel/avaliavel'
 import { EscolaProvider } from '../../../providers/escola/escola';
 import { ClasseProvider } from '../../../providers/classe/classe';
+import { TipoProvider } from '../../../providers/tipo/tipo';
 
 @IonicPage()
 @Component({
@@ -50,7 +51,7 @@ export class EditAvaliavelPage {
         this.toast.create({ message: 'Erro ao carregar as Classes.', duration: 3000, position: 'botton' }).present();
       });
 
-      /** 
+
       this.tipoProvider.getAll()
       .then((result: any[]) => {
         this.tipos = result;
@@ -58,7 +59,7 @@ export class EditAvaliavelPage {
       .catch(() => {
         this.toast.create({ message: 'Erro ao carregar as Tipos.', duration: 3000, position: 'botton' }).present();
       });
-      */
+
   }
 
   save() {
