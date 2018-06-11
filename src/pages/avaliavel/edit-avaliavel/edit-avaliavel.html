@@ -16,6 +16,11 @@
     </ion-item>
 
     <ion-item>
+      <ion-label stacked>Obs</ion-label>
+      <ion-input type="text" name="obs" [(ngModel)]="model.obs"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label stacked>Escola</ion-label>
       <ion-select name="escola_id" [(ngModel)]="model.escola_id">
         <ion-option *ngFor="let escola of escolas" value="{{ escola.escola_id }}">{{ escola.nome}}</ion-option>

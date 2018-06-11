@@ -43,7 +43,8 @@ export class DatabaseProvider {
       ['CREATE TABLE IF NOT EXISTS escolas (escola_id integer primary key AUTOINCREMENT NOT NULL, nome TEXT)']
       ,['CREATE TABLE IF NOT EXISTS classes (classe_id integer primary key AUTOINCREMENT NOT NULL, nome TEXT)']
       ,['CREATE TABLE IF NOT EXISTS tipos   (tipo_id   integer primary key AUTOINCREMENT NOT NULL, classe_id integer, nome TEXT)']
-      ,['CREATE TABLE IF NOT EXISTS avaliaveis (avaliavel_id integer primary key AUTOINCREMENT NOT NULL, escola_id integer, classe_id integer, tipo_id integer, identificacao TEXT, obs TEXT)']
+      ,['DROP TABLE IF EXISTS avaliaveis ']
+      ,['CREATE TABLE IF NOT EXISTS avaliaveis (avaliavel_id integer primary key AUTOINCREMENT NOT NULL, escola_id integer, classe_id integer, tipo_id integer, nome TEXT, obs TEXT)']
       ,['CREATE TABLE IF NOT EXISTS perguntas (pergunta_id integer primary key AUTOINCREMENT NOT NULL, tipo_id integer, pergunta TEXT)']      
       ,['CREATE TABLE IF NOT EXISTS respostas (resposta_id integer primary key AUTOINCREMENT NOT NULL, avaliavel_id integer, pergunta_id integer, resposta CHAR(1))']
     ])

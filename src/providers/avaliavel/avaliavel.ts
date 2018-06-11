@@ -10,8 +10,8 @@ export class AvaliavelProvider {
   public insert(avaliavel: Avaliavel) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into avaliaveis (nome, escola_id, classe_id, tipo_id) values (?,?,?,?)';
-        let data = [avaliavel.nome, avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id];
+        let sql = 'insert into avaliaveis (nome, obs, escola_id, classe_id, tipo_id) values (?,?,?,?)';
+        let data = [avaliavel.nome, avaliavel.obs, avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -22,8 +22,8 @@ export class AvaliavelProvider {
   public update(avaliavel: Avaliavel) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update avaliaveis set nome = ?, escola_id = ?, classe_id = ?, tipo_id = ? where avaliavel_id = ?';
-        let data = [avaliavel.nome, avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id, avaliavel.avaliavel_id];
+        let sql = 'update avaliaveis set nome = ?, obs = ?, escola_id = ?, classe_id = ?, tipo_id = ? where avaliavel_id = ?';
+        let data = [avaliavel.nome, avaliavel.obs,  avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id, avaliavel.avaliavel_id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -56,6 +56,10 @@ export class AvaliavelProvider {
               let avaliavel = new Avaliavel();
               avaliavel.avaliavel_id = item.avaliavel_id;
               avaliavel.nome = item.nome;
+              avaliavel.obs  = item.obs;
+              avaliavel.escola_id = item.escola_id;
+              avaliavel.classe_id = item.classe_id;
+              avaliavel.tipo_id = item.tipo_id;
 
               return avaliavel;
             }
@@ -104,4 +108,5 @@ export class Avaliavel {
   classe_id: number;
   tipo_id: number;
   nome: string;
+  obs: string;
 }

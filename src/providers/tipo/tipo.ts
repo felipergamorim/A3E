@@ -56,6 +56,7 @@ export class TipoProvider {
               let tipo = new Tipo();
               tipo.tipo_id = item.tipo_id;
               tipo.nome = item.nome;
+              tipo.classe_id = item.classe_id;
 
               return tipo;
             }

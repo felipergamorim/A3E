@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { AvaliavelProvider, Avaliavel } from '../../../providers/avaliavel/avaliavel'
 import { EscolaProvider } from '../../../providers/escola/escola';
 import { ClasseProvider } from '../../../providers/classe/classe';
-import { TipoProvider } from '../../../providers/tipo/tipo';
+import { TipoProvider } from './../../../providers/tipo/tipo';
 
 @IonicPage()
 @Component({
@@ -19,7 +19,8 @@ export class EditAvaliavelPage {
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     private toast: ToastController, private avaliavelProvider: AvaliavelProvider,
-    private escolaProvider: EscolaProvider, private classeProvider: ClasseProvider) {
+    private escolaProvider: EscolaProvider, private classeProvider: ClasseProvider,
+    private tipoProvider: TipoProvider) {
 
     this.model = new Avaliavel();
 
@@ -69,7 +70,7 @@ export class EditAvaliavelPage {
         this.navCtrl.pop();
       })
       .catch(() => {
-        this.toast.create({ message: 'Erro ao salvar a avaliavel.', duration: 3000, position: 'botton' }).present();
+        this.toast.create({ message: 'Erro ao salvar o Item Avaliavel.', duration: 3000, position: 'botton' }).present();
       });
   }
 
