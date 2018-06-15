@@ -67,6 +67,35 @@ export class TipoProvider {
       .catch((e) => console.error(e));
   }
 
+  public getAllClasse(classe_id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) =>{
+        let sql = 'SELECT e.* FROM tipos e where 1=1';
+        let data: any[];
+
+        if(classe_id){
+          sql += ' and e.nome like ?'
+          data.push('%' + classe_id + '%');
+        }
+
+        return db.executeSql(sql, data)
+          .then((data: any) =>{
+            if (data.rows.length > 0){
+              let tipos: any[] = [];
+              for (var i = 0; i < data.rows.length; i++){
+                var tipo = data.rows.item(i);
+                tipos.push(tipo);
+              }
+              return tipos;
+            } else{
+              return[];
+            }
+          })
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+
   public getAll(nome: string = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {

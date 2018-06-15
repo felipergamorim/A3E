@@ -27,6 +27,14 @@ export class TipoPage {
     this.navCtrl.push('EditTipoPage');
   }
 
+  Teste() {
+    this.tipoProvider.getAllClasse(1)
+      .then((result: any[]) => {
+        this.tipos = result;
+      })
+      //Teste do filtro de Tipos por classe
+  }
+
   editTipo(tipo_id: number) {
     this.navCtrl.push('EditTipoPage', { tipo_id: tipo_id });
   }
