@@ -41,6 +41,16 @@ export class AvaliavelPage {
       })
   }
 
+  respostasAvaliavel(avaliavel: Avaliavel) {
+    this.avaliavelProvider.update(avaliavel)
+      .then(() => {
+        // Removendo do array de produtos
+        var index = this.avaliavels.indexOf(avaliavel);
+        this.avaliavels.splice(index, 1);
+        this.toast.create({ message: 'Avaliavel removida.', duration: 3000, position: 'botton' }).present();
+      })
+  }
+
   filterAvaliavels(ev: any) {
     this.getAllAvaliavels();
   }

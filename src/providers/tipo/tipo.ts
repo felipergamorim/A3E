@@ -68,16 +68,16 @@ export class TipoProvider {
       .catch((e) => console.error(e));
   }
 
-  public getAll(nome: string = null) {
+  public getAll(nomeClasse: string = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'SELECT * FROM tipos where 1=1' ;
+        let sql = 'SELECT t.* FROM tipos t, classes c where t.classe_id = c.classe_id ' ;
         var data: any[];
 
         // filtrando pelo nome
-        if (nome) {
-          sql += ' and nome like ?'
-          data.push('%' + nome + '%');
+        if (nomeClasse) {
+          sql += ' and  c.nome like ?)'
+          data.push('%' + nomeClasse + '%');
         }
 
         return db.executeSql(sql, data)

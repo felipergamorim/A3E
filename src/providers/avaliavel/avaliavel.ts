@@ -10,7 +10,7 @@ export class AvaliavelProvider {
   public insert(avaliavel: Avaliavel) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into avaliaveis (nome, obs, escola_id, classe_id, tipo_id) values (?,?,?,?)';
+        let sql = 'insert into avaliaveis (nome, obs, escola_id, classe_id, tipo_id) values (?,?,?,?,?)';
         let data = [avaliavel.nome, avaliavel.obs, avaliavel.escola_id, avaliavel.classe_id, avaliavel.tipo_id];
 
         return db.executeSql(sql, data)

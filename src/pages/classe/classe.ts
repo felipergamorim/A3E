@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { ClasseProvider, Classe } from '../../providers/classe/classe';
+import { TipoPage } from '../tipo/tipo';
 
 @Component({
   selector: 'page-classe',
@@ -39,6 +40,10 @@ export class ClassePage {
         this.classes.splice(index, 1);
         this.toast.create({ message: 'Classe removida.', duration: 3000, position: 'botton' }).present();
       })
+  }
+
+  mostraTipos(classe: Classe) {
+    this.navCtrl.push(TipoPage, { classe: classe });
   }
 
   filterClasses(ev: any) {
