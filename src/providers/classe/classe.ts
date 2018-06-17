@@ -70,12 +70,12 @@ export class ClasseProvider {
   public getAll(nome: string = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'SELECT e.* FROM classes e where 1=1' ;
+        let sql = 'SELECT c.* FROM classes c where 1=1' ;
         var data: any[];
 
         // filtrando pelo nome
         if (nome) {
-          sql += ' and e.nome like ?'
+          sql += ' and c.nome like ? '
           data.push('%' + nome + '%');
         }
 

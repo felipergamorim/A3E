@@ -10,8 +10,8 @@ export class TipoProvider {
   public insert(tipo: Tipo) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into tipos (nome) values (?)';
-        let data = [tipo.nome];
+        let sql = 'insert into tipos (nome,classe_id) values (?,?)';
+        let data = [tipo.nome,tipo.classe_id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -22,8 +22,8 @@ export class TipoProvider {
   public update(tipo: Tipo) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update tipos set nome = ? where tipo_id = ?';
-        let data = [tipo.nome, tipo.tipo_id];
+        let sql = 'update tipos set nome = ?, classe_id = ? where tipo_id = ?';
+        let data = [tipo.nome, tipo.classe_id, tipo.tipo_id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -56,6 +56,7 @@ export class TipoProvider {
               let tipo = new Tipo();
               tipo.tipo_id = item.tipo_id;
               tipo.nome = item.nome;
+              tipo.classe_id = item.classe_id;
 
               return tipo;
             }
@@ -96,16 +97,16 @@ export class TipoProvider {
       .catch((e) => console.error(e));
   }
 
-  public getAll(nome: string = null) {
+  public getAll(nomeClasse: string = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'SELECT e.* FROM tipos e where 1=1' ;
+        let sql = 'SELECT t.* FROM tipos t, classes c where t.classe_id = c.classe_id ' ;
         var data: any[];
 
         // filtrando pelo nome
-        if (nome) {
-          sql += ' and e.nome like ?'
-          data.push('%' + nome + '%');
+        if (nomeClasse) {
+          sql += ' and  c.nome like ?)'
+          data.push('%' + nomeClasse + '%');
         }
 
         return db.executeSql(sql, data)

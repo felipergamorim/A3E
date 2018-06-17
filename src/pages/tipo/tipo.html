@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="filterTipos($event)" [(ngModel)]="searchText"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterTipos($event)" [(ngModel)]="classeText"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let tipo of tipos">
 
@@ -19,6 +19,13 @@
         <button ion-button color="danger" (click)="removeTipo(tipo)">
           <ion-icon name="trash"></ion-icon>
           Excluir
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="perguntasTipo(tipo)">
+          <ion-icon name="options"></ion-icon>
+          Respostas
         </button>
       </ion-item-options>
 

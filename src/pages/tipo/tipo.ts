@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController,  NavParams,ToastController } from 'ionic-angular';
 import { TipoProvider, Tipo } from '../../providers/tipo/tipo';
 
 @Component({
@@ -8,16 +8,20 @@ import { TipoProvider, Tipo } from '../../providers/tipo/tipo';
 })
 export class TipoPage {
   tipos: any[] = [];
-  searchText: string = null;
+  classeText: string = null;
 
-  constructor(public navCtrl: NavController, private toast: ToastController, private tipoProvider: TipoProvider) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams,private toast: ToastController, private tipoProvider: TipoProvider) { 
+    if (this.navParams.data.classe) {
+      this.classeText = this.navParams.data.classe.nome;
+    }
+  }
 
   ionViewDidEnter() {
     this.getAllTipos();
   }
 
   getAllTipos() {
-    this.tipoProvider.getAll(this.searchText)
+    this.tipoProvider.getAll(this.classeText)
       .then((result: any[]) => {
         this.tipos = result;
       });
@@ -41,6 +45,15 @@ export class TipoPage {
 
   removeTipo(tipo: Tipo) {
     this.tipoProvider.remove(tipo.tipo_id)
+      .then(() => {
+        // Removendo do array de produtos
+        var index = this.tipos.indexOf(tipo);
+        this.tipos.splice(index, 1);
+        this.toast.create({ message: 'Tipo removida.', duration: 3000, position: 'botton' }).present();
+      })
+  }
+  perguntasTipo(tipo: Tipo) {
+    this.tipoProvider.update(tipo)
       .then(() => {
         // Removendo do array de produtos
         var index = this.tipos.indexOf(tipo);
