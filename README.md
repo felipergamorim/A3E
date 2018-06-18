@@ -7,6 +7,10 @@ npm install
 
 ionic cordova run android 
 
-# or put de debug and device clause
+# For debug and device clause
+# Put Open Chrome in this page  ->   
+chrome://inspect/#devices
+
+# And Run the command below 
 
 ionic cordova run android -debug -device
