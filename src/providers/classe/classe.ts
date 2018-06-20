@@ -71,7 +71,7 @@ export class ClasseProvider {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'SELECT c.* FROM classes c where 1=1' ;
-        var data: any[];
+        var data: any[] = [];
 
         // filtrando pelo nome
         if (nome) {

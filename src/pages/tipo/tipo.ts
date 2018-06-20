@@ -8,11 +8,12 @@ import { TipoProvider, Tipo } from '../../providers/tipo/tipo';
 })
 export class TipoPage {
   tipos: any[] = [];
-  classeText: string = null;
+  classes: any[] = [];
+  classe_id: number = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private toast: ToastController, private tipoProvider: TipoProvider) { 
     if (this.navParams.data.classe) {
-      this.classeText = this.navParams.data.classe.nome;
+      this.classe_id = this.navParams.data.classe.classe_id;
     }
   }
 
@@ -21,7 +22,7 @@ export class TipoPage {
   }
 
   getAllTipos() {
-    this.tipoProvider.getAll(this.classeText)
+    this.tipoProvider.getAll(this.classe_id)
       .then((result: any[]) => {
         this.tipos = result;
       });
@@ -29,14 +30,6 @@ export class TipoPage {
 
   addTipo() {
     this.navCtrl.push('EditTipoPage');
-  }
-
-  Teste() {
-    this.tipoProvider.getAllClasse(1)
-      .then((result: any[]) => {
-        this.tipos = result;
-      })
-      //Teste do filtro de Tipos por classe
   }
 
   editTipo(tipo_id: number) {

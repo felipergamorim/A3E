@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { EscolaProvider, Escola } from '../../providers/escola/escola';
+import { ClassePage } from '../classe/classe';
 
 @Component({
   selector: 'page-escola',
@@ -31,7 +32,7 @@ export class EscolaPage {
     this.navCtrl.push('EditEscolaPage', { escola_id: escola_id });
   }
 
-  removeEscola(escola: Escola) {
+  /*removeEscola(escola: Escola) {
     this.escolaProvider.remove(escola.escola_id)
       .then(() => {
         // Removendo do array de produtos
@@ -39,10 +40,9 @@ export class EscolaPage {
         this.escolas.splice(index, 1);
         this.toast.create({ message: 'Escola removida.', duration: 3000, position: 'botton' }).present();
       })
-  }
+  }*/
 
-  filterEscolas(ev: any) {
-    this.getAllEscolas();
+  pushClasse(escola: Escola) {
+    this.navCtrl.push(ClassePage, {escola: escola});
   }
-
 }

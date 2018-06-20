@@ -48,4 +48,13 @@ export class EditEscolaPage {
     }
   }
 
+  removeEscola(model: Escola) {
+    this.escolaProvider.remove(model.escola_id)
+      .then(() => {
+        // Removendo a escola
+        this.toast.create({ message: 'Escola removida.', duration: 3000, position: 'botton' }).present();
+        this.navCtrl.pop();
+      })
+  }
+
 }

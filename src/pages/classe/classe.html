@@ -11,7 +11,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let classe of classes">
 
-      <button ion-item (click)="editClasse(classe.classe_id)">
+      <button ion-item (click)="pushAvaliavel(classe)">
         <h1>{{ classe.nome }}</h1>
       </button>
 

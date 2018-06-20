@@ -7,18 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="filterEscolas($event)" [(ngModel)]="searchText"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let escola of escolas">
 
-      <button ion-item (click)="editEscola(escola.escola_id)">
+      <button ion-item (click)="pushClasse(escola.escola_id)">
         <h1>{{ escola.nome }}</h1>
       </button>
 
       <ion-item-options side="left">
-        <button ion-button color="danger" (click)="removeEscola(escola)">
-          <ion-icon name="trash"></ion-icon>
-          Excluir
+        <button ion-button color="secondary" (click)="editEscola(escola.escola_id)">
+          <ion-icon name="options"></ion-icon>
+          Edit
         </button>
       </ion-item-options>
 

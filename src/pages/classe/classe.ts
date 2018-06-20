@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { ClasseProvider, Classe } from '../../providers/classe/classe';
 import { TipoPage } from '../tipo/tipo';
+import { EscolaProvider, Escola } from '../../providers/escola/escola';
+import { AvaliavelPage } from '../avaliavel/avaliavel';
 
 @Component({
   selector: 'page-classe',
@@ -10,8 +12,16 @@ import { TipoPage } from '../tipo/tipo';
 export class ClassePage {
   classes: any[] = [];
   searchText: string = null;
+  escola: Escola;
 
-  constructor(public navCtrl: NavController, private toast: ToastController, private classeProvider: ClasseProvider) { }
+  constructor(public navCtrl: NavController, private toast: ToastController,
+     private classeProvider: ClasseProvider, public navParams: NavParams,
+      private escolaProvider: EscolaProvider) { 
+
+      if (this.navParams.data.escola){
+        this.escola = this.navParams.data.escola;
+      }
+     }
 
   ionViewDidEnter() {
     this.getAllClasses();
@@ -44,6 +54,10 @@ export class ClassePage {
 
   mostraTipos(classe: Classe) {
     this.navCtrl.push(TipoPage, { classe: classe });
+  }
+
+  pushAvaliavel(classe: Classe) {
+    this.navCtrl.push(AvaliavelPage, {classe: classe});
   }
 
   filterClasses(ev: any) {

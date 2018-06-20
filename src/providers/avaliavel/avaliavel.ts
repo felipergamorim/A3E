@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
+import { Classe } from '../classe/classe';
 
 @Injectable()
 export class AvaliavelProvider {
@@ -71,16 +72,21 @@ export class AvaliavelProvider {
       .catch((e) => console.error(e));
   }
 
-  public getAll(nome: string = null) {
+  public getAll(nome: string = null, classe: Classe = null) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'SELECT * FROM avaliaveis where 1=1' ;
-        var data: any[];
+        var data: any[] = [];
 
         // filtrando pelo nome
         if (nome) {
-          sql += ' and nome like ?'
+          sql += ' and nome like ? ';
           data.push('%' + nome + '%');
+        }
+
+        if (classe) {
+          sql += ' and classe_id = ? ';
+          data.push( classe.classe_id )
         }
 
         return db.executeSql(sql, data)

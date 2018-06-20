@@ -3,15 +3,19 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
+//import { TabsPage } from '../pages/tabs/tabs';
 
 import { DatabaseProvider } from '../providers/database/database'
+import { EscolaPage } from '../pages/escola/escola';
+import { Tab } from 'ionic-angular/umd/navigation/nav-interfaces';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage: any = TabsPage;
+  //Alterando o aplicativo para seu visual "oficial"
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, dbProvider: DatabaseProvider) {
     platform.ready().then(() => {

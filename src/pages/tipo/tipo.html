@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="filterTipos($event)" [(ngModel)]="classeText"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterTipos($event)" [(ngModel)]="classe_id"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let tipo of tipos">
 

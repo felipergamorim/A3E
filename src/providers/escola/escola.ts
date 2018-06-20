@@ -38,6 +38,7 @@ export class EscolaProvider {
         let data = [escola_id];
 
         return db.executeSql(sql, data)
+          .then(() => console.log('Escola removida'))
           .catch((e) => console.error(e));
       })
       .catch((e) => console.error(e));
@@ -71,7 +72,7 @@ export class EscolaProvider {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'SELECT e.* FROM escolas e where 1=1' ;
-        var data: any[];
+        var data: any[] = [];
 
         // filtrando pelo nome
         if (nome) {

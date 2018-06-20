@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { AvaliavelProvider, Avaliavel } from '../../providers/avaliavel/avaliavel';
+import { Classe, ClasseProvider } from '../../providers/classe/classe';
 
 @Component({
   selector: 'page-avaliavel',
@@ -9,15 +10,23 @@ import { AvaliavelProvider, Avaliavel } from '../../providers/avaliavel/avaliave
 export class AvaliavelPage {
   avaliavels: any[] = [];
   searchText: string = null;
+  classe: Classe;
 
-  constructor(public navCtrl: NavController, private toast: ToastController, private avaliavelProvider: AvaliavelProvider) { }
+  constructor(public navCtrl: NavController, private toast: ToastController,
+     private avaliavelProvider: AvaliavelProvider, public navParams: NavParams,
+     private classeProvider: ClasseProvider) {
+
+      if (this.navParams.data.classe){
+        this.classe = this.navParams.data.classe;
+      }
+    }
 
   ionViewDidEnter() {
     this.getAllAvaliavels();
   }
 
   getAllAvaliavels() {
-    this.avaliavelProvider.getAll(this.searchText)
+    this.avaliavelProvider.getAll(this.searchText, this.classe)
       .then((result: any[]) => {
         this.avaliavels = result;
       });
